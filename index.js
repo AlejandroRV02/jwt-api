@@ -45,6 +45,14 @@ const adminRoute = require('./routes/admin');
 app.use('/api/user', authRoute);
 app.use('/api/admin', validateToken, adminRoute);
 
+
+//history vue
+const history = require('connect-history-api-fallback');
+app.use(history());
+
+//Static
+app.use(express.static(__dirname + "/public"));
+
 //Iniciar server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
